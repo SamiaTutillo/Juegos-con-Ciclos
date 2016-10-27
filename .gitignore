@@ -1,0 +1,76 @@
+//UNIVERSIDAD TECNICA DEL NORTE
+// NOMBRE: SAMIA TUTILLO
+//FECHA: 27 de octubre del 2016
+///////////////////////////////
+//Juegos con ciclos
+//inicializar variables de pines
+int led_1=8;
+int led_2=9;
+int led_3=10;
+int led_4=11;
+int led_5=12;
+int led_6=13;
+int sw_1=7;
+int sw_2=6;
+int pulsador=5;
+int vector_leds [6]={led_1,led_2,led_3,led_4,led_5,led_6};
+int lm=0;
+//////////////////////////////////////////////
+// variables de contadores
+int i=0;
+int j=0;
+int contador_1=0;
+int contador_2=0;
+////////////////////////////////////////////
+void setup() {
+  
+    pinMode (led_1,OUTPUT); //pin 8 como salida
+    pinMode (led_2,OUTPUT);//pin 9 como salida
+    pinMode (led_3,OUTPUT);//pin 10 como salida
+    pinMode (led_4,OUTPUT);//pin 11 como salida
+    pinMode (led_5,OUTPUT);//pin 12 como salida
+    pinMode (led_6,OUTPUT);//pin 13 como salida
+    pinMode (sw_1,INPUT);//pin 7 como entrada
+    pinMode (sw_2,INPUT);//pin 6 como entrada
+    pinMode (pulsador,INPUT);//pin 5 como entrada
+    
+}
+
+void loop() {
+  if (digitalRead(sw_1)==HIGH && digitalRead (sw_2)==LOW){
+      delay (300);
+      lm=random (6);
+        for(;j<lm;j++){
+            for(i=led_1;i<14;i++){
+                digitalWrite (i,HIGH);
+                delay (200);
+              }//for 2
+              for (i=led_5;i>sw_1;i--){
+                  digitalWrite (i,LOW);
+                  delay (200);
+                }//for 3
+              i=led_1;
+          }//for1
+        delay (300);
+  }
+  else {
+    if (digitalRead (sw_1)==LOW && digitalRead (sw_2)==HIGH){
+        delay(200);
+        lm=random(6);
+          for(;j<lm;j++){
+            for (contador_1=led_1, contador_2=led_6;contador_1 < led_4;contador_1++,contador_2--){
+                digitalWrite (contador_1,HIGH);
+                digitalWrite (contador_2,HIGH);
+                delay (200);
+              }//for 2
+
+                for (contador_1=led_3, contador_2= led_4; contador_2<14;contador_1--, contador_2++){
+                    digitalWrite (contador_1,LOW);
+                    digitalWrite (contador_2,LOW);
+                    delay (200);
+                  }//for 3
+            }//for 1
+      }
+      delay (300);
+ }
+}
